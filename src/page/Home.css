@@ -1,0 +1,39 @@
+.home {
+    width: 100%;
+    height: 100%;
+    padding: 10px 50px;
+}
+
+.home .header {
+    padding: 30px 0 50px 0;
+}
+
+.home .cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 30px 1px; */
+}
+
+.home .charts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.home .area-chart {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 700px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.home .pie-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+}
