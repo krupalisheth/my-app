@@ -92,10 +92,12 @@ function Home() {
           </div>
           <div className='charts'>
             <div className='area-chart'>
-              <Chart options={options} series={options.series} type="area" width={700} height={440} legend={''} />
+              {/* width={700} height={440} */}
+              <Chart options={options} series={options.series} type="area" legend={''} />
             </div>
             <div className='pie-chart'>
-              <Chart options={pie_options} series={pie_options.series} type='pie' height={350} width={400} />
+              {/* height={350} width={400} */}
+              <Chart options={pie_options} series={pie_options.series} type='pie' />
             </div>
           </div>
         </div>
