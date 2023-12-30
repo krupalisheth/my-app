@@ -1,3 +1,83 @@
+.order-sidebar {
+    position: sticky;
+    width: 35%;
+    padding: 30px 10px;
+    top: 0;
+    right: 0;
+}
+
+.selected-item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.selected-item p:nth-child(1) {
+    width: 35%;
+}
+
+.selected-item p:nth-child(2) {
+    text-align: right;
+    width: 5%;
+}
+
+.selected-item p:nth-child(3) {
+    text-align: right;
+    width: 25%;
+}
+
+.selected-item p:nth-child(4) {
+    text-align: right;
+    width: 25%;
+}
+
+.selected-item p:nth-child(5) {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.selected-item p:nth-child(5) span {
+    background-color: rgb(236, 63, 63);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-btn {
+    background-color: #1447a5;
+    color: white;
+    margin-top: 30px;
+    padding: 8px 17px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #c4cee0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1447a5;
+}
+
 .orders {
-    width: calc(100vw - 220px);
+    width: calc(100% - 220px);
+    display: flex;
 }
