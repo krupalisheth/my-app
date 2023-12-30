@@ -10,6 +10,7 @@ import image from '../images/bur1.jpeg'
 const Sales = () => {
     const [total, setTotal] = useState(0);
     const [selected, setSelected] = useState([]);
+    const [totalAmt, settotalAmt] = useState(0);
 
     const handleClick = (element) => {
         const findItemIndex = selected.findIndex(item => {
@@ -17,24 +18,47 @@ const Sales = () => {
         })
 
         if (findItemIndex > -1) {
-            let newArr = selected;
             selected[findItemIndex].qty += 1;
-            console.log(selected)
             setSelected(selected);
         } else {
             setSelected([...selected, JSON.parse(JSON.stringify(element))]);
         }
-        console.log(selected)
+        getTotalPrice(element, true);
+    }
+
+    const getTotalPrice = (element, type) => {
+        let total = totalAmt;
+        if (type) {
+            total += Number(element.price);
+        }
+        else {
+            total -= Number(element.price);
+        }
+        // selected.forEach(element => {
+        //     total += (element.qty * element.price);
+        // });
+        settotalAmt(total);
     }
 
     const handleProceed = () => {
         setSelected([]);
+        settotalAmt(0);
+        alert("Are you sure you want to save order ?");
     }
     const handleDelete = (_id) => {
-        const reducedData = selected.filter(item => {
-            return item._id !== _id
+        const findItemIndex = selected.findIndex(item => {
+            return item._id === _id;
         })
-        setSelected(reducedData);
+        if (findItemIndex > -1 && selected[findItemIndex].qty > 1) {
+            selected[findItemIndex].qty -= 1;
+            setSelected(selected);
+        } else {
+            const reducedData = selected.filter(item => {
+                return item._id !== _id
+            })
+            setSelected(reducedData);
+        }
+        getTotalPrice(selected[findItemIndex], false);
     }
     useEffect(() => {
         const totalAmt = salesData.reduce((prev, item) => {
@@ -55,11 +79,11 @@ const Sales = () => {
                                     {salesData?.map((product, idx) => {
                                         return (
                                             <>
-                                                <Card key={idx} className='cards' style={{ width: '17rem' }}>
+                                                <Card key={idx} className='cards' style={{ width: '18rem' }}>
                                                     <Card.Img className='card-img' variant="top" src={require(`../images/${product.image}`)} />
                                                     <Card.Body>
                                                         <Card.Title>{product.name}</Card.Title>
-                                                        <Card.Text style={{ marginBottom: '20px' }}>{product.desc}</Card.Text>
+                                                        <Card.Text style={{ marginBottom: '20px', minHeight: '55px' }}>{product.desc}</Card.Text>
                                                         <div className='price-cont'>
                                                             <Card.Text style={{ marginBottom: '10px', fontSize: '20px', fontWeight: '600', textAlign: 'right' }}>Qty. {product.qty}</Card.Text>
                                                             <Card.Text style={{ marginBottom: '10px', fontSize: '20px', fontWeight: '600', textAlign: 'right' }}>Rs.{product.price}</Card.Text>
@@ -83,27 +107,29 @@ const Sales = () => {
                     {
                         selected?.length > 0 ?
                             <div className='order-sidebar'>
-                                <div className='selected-item'>
-                                    <p>Name</p>
-                                    <p>QTY.</p>
-                                    <p>Price</p>
-                                    <p>Amt.</p>
-                                    <p></p>
+                                <div style={{ minHeight: '100px' }}>
+                                    <div className='selected-item'>
+                                        <p>Name</p>
+                                        <p>QTY.</p>
+                                        <p>Price</p>
+                                        <p>Amt.</p>
+                                        <p></p>
+                                    </div>
+                                    {selected.map((element, idx) => {
+                                        return (
+                                            <>
+                                                <div className='selected-item'>
+                                                    <p>{element.name}</p>
+                                                    <p>{element.qty}</p>
+                                                    <p>{element.price}</p>
+                                                    <p>{element.price * element.qty}</p>
+                                                    <p onClick={() => handleDelete(element._id)}><span>{element.qty > 1 ? '-' : 'X'}</span></p>
+                                                </div>
+                                            </>
+                                        )
+                                    })}
                                 </div>
-                                {selected.map((element, idx) => {
-                                    return (
-                                        <>
-                                            <div className='selected-item'>
-                                                <p>{element.name}</p>
-                                                <p>{element.qty}</p>
-                                                <p>{element.price}</p>
-                                                <p>{element.price * element.qty}</p>
-                                                <p onClick={() => handleDelete(element._id)}><span>{element.qty > 1 ? '-' : 'X'}</span></p>
-                                            </div>
-                                        </>
-                                    )
-                                })}
-                                <div onClick={() => handleProceed()} className='footer-btn'>Proceed Rs.{'300'}</div>
+                                <div onClick={() => handleProceed()} className='footer-btn'>Proceed Rs.{totalAmt}</div>
                             </div>
                             : null
                     }

@@ -74,53 +74,53 @@ export const salesData = [
     {
         _id: 1,
         name: "Burger",
-        price: "120",
+        price: 80,
         qty: 1,
         image: "bur1.jpeg",
-        desc: "swhrghsnlfs"
+        desc: "Simple aloo tikki"
     },
 
     {
         _id: 2,
         name: "Cheese Burger",
-        price: "190",
+        price: 130,
         qty: 1,
         image: "bur2.jpeg",
-        desc: "swhrghsnlfs"
+        desc: "Simple aloo tikki with cheeze slice"
     },
 
     {
         _id: 3,
-        name: "Peri Peri Burger",
-        price: "130",
+        name: "Peri Peri Panini",
+        price: 130,
         qty: 1,
         image: "bur3.jpeg",
-        desc: "swhrghsnlfs"
+        desc: "Panini sandwich with peri peri sauce and vegitables"
     },
 
     {
         _id: 4,
-        name: "iPhone",
-        price: "34",
+        name: "Veg. Cheese Sandwich",
+        price: 90,
         qty: 1,
         image: "sand1.jpeg",
-        desc: "swhrghsnlfs"
+        desc: "Veg. sandwich with cheese"
     },
 
     {
         _id: 5,
-        name: "iPhone",
-        price: "65",
+        name: "Coffee",
+        price: 60,
         qty: 1,
-        image: "sand2.jpeg",
-        desc: "swhrghsnlfs"
+        image: "cofe1.jpeg",
+        desc: "Brewed coffee"
     },
     {
         _id: 6,
-        name: "iPhone",
-        price: "64000",
+        name: "Cold Coffee",
+        price: 80,
         qty: 1,
-        image: "sand2.jpeg",
-        desc: "swhrghsnlfs"
+        image: "cc1.jpeg",
+        desc: "Refreshing cold coffee"
     }
 ]
