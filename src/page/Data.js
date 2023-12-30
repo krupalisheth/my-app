@@ -73,36 +73,54 @@ export const data = [
 export const salesData = [
     {
         _id: 1,
-        name: "iPhone",
-        price: "64000",
-        qty: "3",
+        name: "Burger",
+        price: "120",
+        qty: 1,
+        image: "bur1.jpeg",
+        desc: "swhrghsnlfs"
     },
 
     {
-        _id: 1,
-        name: "iPhone",
-        price: "64000",
-        qty: "3",
+        _id: 2,
+        name: "Cheese Burger",
+        price: "190",
+        qty: 1,
+        image: "bur2.jpeg",
+        desc: "swhrghsnlfs"
     },
 
     {
-        _id: 1,
-        name: "iPhone",
-        price: "64000",
-        qty: "3",
+        _id: 3,
+        name: "Peri Peri Burger",
+        price: "130",
+        qty: 1,
+        image: "bur3.jpeg",
+        desc: "swhrghsnlfs"
     },
 
     {
-        _id: 1,
+        _id: 4,
         name: "iPhone",
-        price: "64000",
-        qty: "3",
+        price: "34",
+        qty: 1,
+        image: "sand1.jpeg",
+        desc: "swhrghsnlfs"
     },
 
     {
-        _id: 1,
+        _id: 5,
+        name: "iPhone",
+        price: "65",
+        qty: 1,
+        image: "sand2.jpeg",
+        desc: "swhrghsnlfs"
+    },
+    {
+        _id: 6,
         name: "iPhone",
         price: "64000",
-        qty: "3",
+        qty: 1,
+        image: "sand2.jpeg",
+        desc: "swhrghsnlfs"
     }
 ]

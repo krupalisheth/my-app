@@ -2,6 +2,8 @@
     height: 100vh;
     width: 220px;
     background-color: #1447a5;
+    position: sticky;
+    top: 0;
 }
 
 .sidebar .navlink {
