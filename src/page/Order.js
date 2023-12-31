@@ -28,16 +28,15 @@ function Order() {
 
     useEffect(() => {
         let orders = JSON.parse(localStorage.getItem('data'));
-        // console.log(JSON.parse(orders));
-        // setOrders(orders)
+        setOrders(orders)
         // setSelected(salesData);
-    }, [orders]);
+    }, [setOrders]);
     return (
         <>
             <div className='main'>
                 <Sidebar />
                 <div className='orders'>
-                    <div style={{ width: '65%' }}>
+                    <div style={{ width: '65%', padding: '0px 20px' }}>
                         <h1>Orders</h1>
                         <div className="orders-table">
                             {
@@ -85,7 +84,7 @@ function Order() {
                     </div>
                     {
                         selected?.length > 0 ?
-                            <div className='order-sidebar'>
+                            <div className='order-sidebar1'>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><h3>Order - # {id}</h3> <h2 onClick={() => closeBar()} style={{ color: 'red', marginRight: '10px', cursor: 'pointer' }}>x</h2></div>
                                 <h4>Order At - {date}</h4>
                                 <h6 style={{ color: 'green' }}>{status}</h6>
@@ -109,7 +108,7 @@ function Order() {
                                         )
                                     })}
                                 </div>
-                                <div>Rs.{totalAmt}</div>
+                                <div style={{ textAlign: 'right', fontSize: '20px', fontWeight: '600', paddingLeft: '10px' }}>Rs.{totalAmt}</div>
                             </div>
                             : null
                     }

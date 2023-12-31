@@ -34,43 +34,29 @@ const Sales = () => {
         else {
             total -= Number(element.price);
         }
-        // selected.forEach(element => {
-        //     total += (element.qty * element.price);
-        // });
         settotalAmt(total);
     }
 
     const handleProceed = () => {
-        let data = localStorage.getItem('data');
+        let data = [];
+        data = JSON.parse(localStorage.getItem('data'));
         let id = 1;
         let obj = [];
-        console.log(data)
-        if (data) {
-            id = data.length + 1;
-            obj = [...data, {
-                id,
-                date: new Date(),
-                items: JSON.parse(JSON.stringify(selected)),
-                total: totalAmt,
-                status: 'Success'
-            }];
-        }
-        else {
-            id = 1;
-            obj = [{
-                id,
-                date: new Date(),
-                items: JSON.parse(JSON.stringify(selected)),
-                total: totalAmt,
-                status: 'Success'
-            }];
-        }
+        id = data ? data.length + 1 : 1;
+        obj = {
+            id,
+            date: new Date(),
+            items: JSON.parse(JSON.stringify(selected)),
+            total: totalAmt,
+            status: 'Success'
+        };
+        data = data ? ([...data, JSON.parse(JSON.stringify(obj))]) : ([(JSON.parse(JSON.stringify(obj)))]);
         setSelected([]);
         settotalAmt(0);
         setTimeout(function () {
             alert("Order Saved Successfully");
         }, 500);
-        localStorage.setItem('data', JSON.stringify(obj));
+        localStorage.setItem('data', JSON.stringify(data));
     }
     const handleDelete = (_id) => {
         const findItemIndex = selected.findIndex(item => {
