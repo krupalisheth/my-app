@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import Cards from './Cards'
 import './Home.css';
 import Chart from 'react-apexcharts'
 
 function Home() {
+  const [orders, setOrders] = useState([]);
+  const [sales, setSales] = useState(0);
+  const [revenue, setRevenue] = useState(0);
+  const [series, setSeries] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [donut, setDonut] = useState([]);
   var options = {
     series: [{
       name: "Sales",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+      data: series
     }],
     chart: {
       type: 'area',
@@ -34,7 +39,7 @@ function Home() {
     },
 
     xaxis: {
-      categories: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
+      categories: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
     },
     yaxis: {
 
@@ -54,7 +59,7 @@ function Home() {
       type: 'donut',
     },
     dataLabels: {
-      enabled: false
+      enabled: true
     },
     responsive: [{
       breakpoint: 480,
@@ -75,6 +80,30 @@ function Home() {
     }
   };
 
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem('data'));
+    setOrders(data);
+    setSales(data.length);
+    let revenue = 0;
+    let d = [];
+    data?.forEach(element => {
+      revenue += Number(element.total);
+      // let m = new Date(element.date).getMonth();
+      // let s = JSON.parse(JSON.stringify(series[m]))
+      // s += 1;
+      // series[m] = s;
+      element.items?.forEach(ele => {
+        d = [...d, ele];
+      });
+      series[0] = data.length;
+    });
+    d.forEach(element => {
+
+    });
+    setSeries(series)
+    setRevenue(revenue);
+  }, [setOrders, setSales, setRevenue, setSeries])
+
   return (
     <>
       <div className='main'>
@@ -84,11 +113,11 @@ function Home() {
           <div className='header'>
             <h2>Welcome, Krupali Sheth</h2>
           </div>
-          <div className='cards'>
-            <Cards title="Today's Orders" count="30" pr="10.37" color='#F2D30F'></Cards>
-            <Cards title="Sales" count="45" pr="23.37" color='#1f8c09'></Cards>
-            <Cards title="Customer" count="10" pr="8.37" color='#de2a12'></Cards>
-            <Cards title="Monthly Revenue" count="$35000" pr="45.12" color='#1447a5'></Cards>
+          <div className='cards reports'>
+            <Cards title="Today's Orders" count={sales} pr="10.37" color='#F2D30F'></Cards>
+            {/* <Cards title="Sales" count="45" pr="23.37" color='#1f8c09'></Cards> */}
+            {/* <Cards title="Customer" count="10" pr="8.37" color='#de2a12'></Cards> */}
+            <Cards title="Monthly Revenue" count={'Rs. ' + revenue} pr="45.12" color='#1447a5'></Cards>
           </div>
           <div className='charts'>
             <div className='area-chart'>

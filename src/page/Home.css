@@ -10,11 +10,12 @@
     padding: 30px 0 50px 0;
 }
 
-.home .cards {
+.home .cards.reports {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     /* padding: 30px 1px; */
+    width: 100%;
 }
 
 .home .charts {
