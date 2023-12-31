@@ -26,3 +26,8 @@
     color: #fff;
     transition: 0.5s ease;
 }
+
+.sidebar #nav-active {
+    background-color: rgb(120, 157, 227);
+    color: #fff;
+}

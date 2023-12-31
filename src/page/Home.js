@@ -83,7 +83,7 @@ function Home() {
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem('data'));
     setOrders(data);
-    setSales(data.length);
+    setSales(data?.length ? data.length : 0);
     let revenue = 0;
     let d = [];
     data?.forEach(element => {
@@ -110,10 +110,10 @@ function Home() {
         <Sidebar />
 
         <div className='home'>
-          <div className='header'>
-            <h2>Welcome, Krupali Sheth</h2>
-          </div>
-          <div className='cards reports'>
+          {/* <div className='header'> */}
+          {/* <h2>Welcome, Krupali Sheth</h2> */}
+          {/* </div> */}
+          <div className='cards reports' style={{ marginTop: "30px" }}>
             <Cards title="Today's Orders" count={sales} pr="10.37" color='#F2D30F'></Cards>
             {/* <Cards title="Sales" count="45" pr="23.37" color='#1f8c09'></Cards> */}
             {/* <Cards title="Customer" count="10" pr="8.37" color='#de2a12'></Cards> */}
@@ -124,10 +124,9 @@ function Home() {
               {/* width={700} height={440} */}
               <Chart options={options} series={options.series} type="area" legend={''} />
             </div>
-            <div className='pie-chart'>
-              {/* height={350} width={400} */}
+            {/* <div className='pie-chart'>
               <Chart options={pie_options} series={pie_options.series} type='pie' />
-            </div>
+            </div> */}
           </div>
         </div>
 
